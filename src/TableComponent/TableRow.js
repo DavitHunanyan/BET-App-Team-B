@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EditRow from './EditRow.js';
 import array from '../array.js';
+import Fetch from '../Fetch.js';
 
 class TableRow extends Component{
 		     constructor(props){
@@ -8,12 +9,17 @@ class TableRow extends Component{
 		     this.state={
 		                editingShow:false,
 		                editRowData:{},
-		      			editRowIndex:""
+		      			editRowIndex:"",
+						guIdArray:[],
+						checkedObjectArray:[],
+						checkedIdArray:[]
 		     			}
 			     this.deleteRow=this.deleteRow.bind(this);
 			     this.editRow=this.editRow.bind(this);
 			     this.saveEditing=this.saveEditing.bind(this);
 			     this.cancel=this.cancel.bind(this);
+				 this.checkBoxOnChange=this.checkBoxOnChange.bind(this);
+				 this.sendMail=this.sendMail.bind(this);
 			    // var editRowData={};
 		     }
 	     deleteRow(event){
@@ -45,14 +51,42 @@ class TableRow extends Component{
 		     				editingShow:false 
 		     				});
 	     }
+		 checkBoxOnChange(event){
+			 let index = event.target.id;
+			 if(event.target.checked === true){
+				 this.state.guIdArray.push(this.props.dataArray[index].Guid);
+				 
+			 }else{
+				 for(let i=0;i<this.state.guIdArray.length;++i){
+
+					 if(this.props.dataArray[index].Guid === this.state.guIdArray[i])
+					 {
+                    this.state.guIdArray.splice(i,1);
+					
+					 }
+					
+				 }
+			 }
+			console.log("GuId Array",this.state.guIdArray);
+		 }
+		 sendMail(){
+			 console.log(this.state.guIdArray);
+			Fetch.postData('http://crmbetb.azurewebsites.net/api/SendMail', this.state.guIdArray).then(response =>
+			console.log("POST :",response));
+			/*Fetch.postData('http://crmbetb.azurewebsites.net/api/Contacts',{CompanyName:"STDev",
+                                                                            Country:"Armenia",
+																			Email:"0777dav@gmail.com",
+                                                                            FullName:"Davit  Hunanyan",
+                                                                            Position:"FrontEnd Developer"} )*/
+		 }
 	     render(){
 			 console.log("table row data",this.props.dataArray);
 		     const data=this.props.dataArray
 		      //console.log("TableRow Data :",data);
 		      if(this.state.editingShow){
-		          const editingrow = data[this.state.editRowIndex];
-		          const editrow=
-		     	<tr  id ="editingrow">
+		         // const editingrow = data[this.state.editRowIndex];
+		         // const editrow=
+		     	{/*<tr  id ="editingrow">
 			     	<td key={editingrow.Firstname}>
 				     	<EditRow update={this.props.update} data={editingrow.Firstname} propName="Firstname" editingData={this.state.editRowData} 
 				     	show={this.state.editingShow} indexEdit={this.state.editRowIndex}/>
@@ -72,6 +106,7 @@ class TableRow extends Component{
 			     	</td>
 			     	<td colSpan="2"><button onClick={this.saveEditing} className="savebutton" >Save Change</button><button onClick={this.cancel}>Cancel</button></td>
 		     	</tr>
+
 		     	 const row = data.map((data,index)=>
 		     	
 		     	<tr key={index} ref={index}>
@@ -98,7 +133,7 @@ class TableRow extends Component{
 		     			{row}
 		     		
 		     		</tbody>
-		     	);
+				 );*/}
 
 		      }
 		      const row = data.map((data,index)=>
@@ -124,13 +159,13 @@ class TableRow extends Component{
 			     	    {data.Email}
 			     	</td>
 					 
-			     	<td colSpan="2"><input type="checkbox"/> {/*<button id ={index} onClick={this.editRow} className="editbutton">Edit</button><button className ="deletebutton" onClick={this.deleteRow}  id={index}>Delete</button>*/}</td>
+			     	<td ><input type="checkbox" id={index} onChange ={this.checkBoxOnChange } /> {/*<button id ={index} onClick={this.editRow} className="editbutton">Edit</button><button className ="deletebutton" onClick={this.deleteRow}  id={index}>Delete</button>*/}</td>
 		     	</tr>
 		     	);
 		     	return(
 		     		<tbody>
 		     			{row}
-		     		
+		     		    <button onClick={this.sendMail}>Send Mail</button>
 		     		</tbody>
 		     	);
 		      

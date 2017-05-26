@@ -5,28 +5,30 @@ import AddRowTable from './AddRowTable.js';
 import '../StyleSheet/Table.css';
 import Fetch from '../Fetch.js';
 
-import array from '../array.js';
+//import array from '../array.js';
 
 class Table extends Component{
 			constructor(props){
 				super(props);
 				this.state={
-				  data:array
+				  data:[]
 				};
 				this.updateTable=this.updateTable.bind(this);
 			}
 			updateTable(){
-		      this.setState({data:array});
-		      console.log("update table, and Data",array);
+		      this.setState({data:[]});
+		     // console.log("update table, and Data",array);
 			}
 			componentDidMount(){
 			 
-			 Fetch.getData('http://crmbetb.azurewebsites.net/api/contacts').then(response => this.setState({data:response}));
-		 }
+			 Fetch.getData('http://crmbetb.azurewebsites.net/api/contacts').then(response =>
+			  this.setState({data:response})
+			  );
+		    }
 			render(){
 		     	return(
 		     	<div className="UserTable">
-				<div id="theader">User Info List</div>
+				<div id="theader">Contacts List</div>
 					<div id="scroll">
 			     	<table className="table">
 			     	<TableHeader headerdata={this.state.data[0]} className="tableheader"/>

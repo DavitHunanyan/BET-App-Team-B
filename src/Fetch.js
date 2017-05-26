@@ -13,6 +13,6 @@ return new Promise((resolve, reject) => {
     }) 
   }
 }
-//ajax.getData('http://crmbetc.azurewebsites.net/api/contacts').then(response => console.log(response));
+//Fetch.getData('http://crmbetc.azurewebsites.net/api/contacts').then(response => console.log(response));
 
 export default Fetch;
