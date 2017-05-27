@@ -8,16 +8,17 @@ class TableHeader extends Component{
 		 let headers =[];
 			  for(let i in obj){
 			  		headers.push(i);
-					  console.log("table header data",headers);
+					  
 			  }
-			  headers.splice(0,3);
-         let header= headers.map((data,index)=>
-				 <th>{data}</th>);
+			let header=  headers.splice(0,5);
+			  
+         let head= header.map((headers,index)=>
+				 <th>{headers}</th>);
 		 	return(
 		 <thead>
 		 	<tr >
 				
-                 {header}
+                 {head}
 		 		<th>Checkbox</th>
 		 	</tr>
 		 </thead>
