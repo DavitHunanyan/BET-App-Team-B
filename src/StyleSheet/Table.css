@@ -17,18 +17,21 @@
     margin: 0px auto;
     border: solid 2px #504b4b;
     border-collapse: collapse;
-	
-
+	 border-bottom: 0;
+	 
 }
+
 .table td{
 	border:solid 2px #504b4b;
 	border-collapse: collapse;
 	text-align: center;
+	
 }
 .table th{
 	border:solid 2px #504b4b;
 	border-collapse: collapse;
 	text-align: center;
+	
 }
 .tableheader{
 	width: 100%;
@@ -84,6 +87,22 @@
 .btn_table:hover{
 	 background-color: #735a73; 
 }
+
+.send_mail{
+	padding: 6px;
+	color: #fff;
+    background-color: #009688;
+    border-radius: .1rem;
+	border: 0px solid transparent;
+    transition: .5s;
+    cursor: pointer;
+	box-shadow: 0 0px 0px 0 rgba(56,38,0,1);
+}
+
+.send_mail:hover{
+	 background-color: #735a73; 
+}
+
 	
 	@media (max-width:768px) {
 

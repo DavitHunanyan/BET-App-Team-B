@@ -13,13 +13,13 @@ class TableHeader extends Component{
 			let header=  headers.splice(0,5);
 			  
          let head= header.map((headers,index)=>
-				 <th>{headers}</th>);
+				 <th key={index}>{headers}</th>);
 		 	return(
 		 <thead>
 		 	<tr >
 				
                  {head}
-		 		<th>Checkbox</th>
+		 		<th>Choose</th>
 		 	</tr>
 		 </thead>
 		 	);

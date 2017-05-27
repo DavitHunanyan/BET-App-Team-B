@@ -36,7 +36,7 @@ class Table extends Component{
 			     	</table>
 					
 			     </div>
-				 <AddRowTable  update={this.updateTable} Id={this.state.data.length + 1} className="addrowtable"/>
+				 {/*<AddRowTable  update={this.updateTable} Id={this.state.data.length + 1} className="addrowtable"/>*/}
 				 </div>
 		     	);
 		     }
