@@ -75,8 +75,8 @@ class TableRow extends Component{
 			console.log("POST :",response));
 			/*Fetch.postData('http://crmbetb.azurewebsites.net/api/Contacts',{CompanyName:"STDev",
                                                                             Country:"Armenia",
-																			Email:"0777dav@gmail.com",
-                                                                            FullName:"Davit  Hunanyan",
+																			Email:"narine.boyakhchyan@gmail.com",
+                                                                            FullName:"Narine Boyakhchyan",
                                                                             Position:"FrontEnd Developer"} )*/
 		 }
 	     render(){

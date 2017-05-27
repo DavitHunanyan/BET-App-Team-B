@@ -20,9 +20,9 @@ class Table extends Component{
 		     // console.log("update table, and Data",array);
 			}
 			componentDidMount(){
-			 
+			 console.log("componentdidmount");
 			 Fetch.getData('http://crmbetb.azurewebsites.net/api/contacts').then(response =>
-			  this.setState({data:response})
+			  {this.setState({data:response});console.log("data :",response)}
 			  );
 		    }
 			render(){

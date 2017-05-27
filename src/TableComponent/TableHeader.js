@@ -4,19 +4,20 @@ class TableHeader extends Component{
 		 render(){
 
 		 const obj=this.props.headerdata;
+		 //console.log("header obj",obj)
 		 let headers =[];
 			  for(let i in obj){
 			  		headers.push(i);
-					 // console.log(headers);
+					  console.log("table header data",headers);
 			  }
+			  headers.splice(0,3);
+         let header= headers.map((data,index)=>
+				 <th>{data}</th>);
 		 	return(
 		 <thead>
 		 	<tr >
-		 		<th>{headers[2]}</th>
-				<th>{headers[3]}</th>
-				<th>{headers[5]}</th>
-				<th>{headers[4]}</th>
-				<th>{headers[6]}</th>
+				
+                 {header}
 		 		<th>Checkbox</th>
 		 	</tr>
 		 </thead>
