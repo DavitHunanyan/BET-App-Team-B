@@ -12,6 +12,13 @@ return new Promise((resolve, reject) => {
           .then(response => resolve(response.text(), err => reject(err)))   
     }) 
   }
+
+   static deleteData(url){
+    return new Promise((resolve,reject) =>{
+      fetch(url,{method: "DELETE"}) 
+    }) 
+  }
+ 
 }
 //Fetch.getData('http://crmbetc.azurewebsites.net/api/contacts').then(response => console.log(response));
 

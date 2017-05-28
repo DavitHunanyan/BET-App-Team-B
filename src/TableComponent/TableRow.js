@@ -75,9 +75,10 @@ class TableRow extends Component{
 			console.log("POST :",response));
 			/*Fetch.postData('http://crmbetb.azurewebsites.net/api/Contacts',{CompanyName:"STDev",
                                                                             Country:"Armenia",
-																			Email:"narine.boyakhchyan@gmail.com",
-                                                                            FullName:"Narine Boyakhchyan",
+																			Email:"davidstdev@gmail.com",
+                                                                            FullName:"Mane Boyakhchyan",
                                                                             Position:"FrontEnd Developer"} )*/
+			//  Fetch.deleteData('http://crmbetb.azurewebsites.net/api/Contacts?Guid=aeb09a83-3078-452b-a734-e082b35b4554');
 		 }
 	     render(){
 			 console.log("table row data",this.props.dataArray);
@@ -148,13 +149,14 @@ class TableRow extends Component{
 				     	show={this.state.editingShow} indexEdit={this.state.editRowIndex}/>
 				     	{data.CompanyName}
 				     </td>
+					  <td key={data.DateInserted} id ="ids">
+			     	    {data.Position}
+			     	</td>
 			     	<td key={data.Mail}>
 			     	    <EditRow update={this.props.update} data={data.Mail} propName="Mail" editingData={this.state.editRowData} show={this.state.editingShow} indexEdit={this.state.editRowIndex}/>
 			     	    {data.Country}
 			     	</td>
-					 <td key={data.DateInserted} id ="ids">
-			     	    {data.Position}
-			     	</td>
+					
 			     	<td key={data.Id} id ="ids">
 			     	    {data.Email}
 			     	</td>
@@ -165,7 +167,7 @@ class TableRow extends Component{
 		     	return(
 		     		<tbody>
 		     			{row}
-		     		    <button onClick={this.sendMail}>Send Mail</button>
+		     		    <button onClick={this.sendMail} id="sendButton">Send Mail</button>
 		     		</tbody>
 		     	);
 		      
