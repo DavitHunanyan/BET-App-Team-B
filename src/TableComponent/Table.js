@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableHeader from'./TableHeader.js';
 import TableRow from './TableRow.js';
-import AddRowTable from './AddRowTable.js';
+//import AddRowTable from './AddRowTable.js';
 import '../StyleSheet/Table.css';
 import Fetch from '../Fetch.js';
 
@@ -20,7 +20,7 @@ class Table extends Component{
 		     // console.log("update table, and Data",array);
 			}
 			componentDidMount(){
-			 console.log("componentdidmount");
+			// console.log("componentdidmount");
 			 Fetch.getData('http://crmbetb.azurewebsites.net/api/contacts').then(response =>
 			  {this.setState({data:response});console.log("data :",response)}
 			  );
@@ -36,13 +36,11 @@ class Table extends Component{
 			     	</table>
 					
 			     </div>
-<<<<<<< HEAD
+
 				{/* <AddRowTable  update={this.updateTable} Id={this.state.data.length + 1} className="addrowtable"/>*/}
 				 </div> 
-=======
-				 {/*<AddRowTable  update={this.updateTable} Id={this.state.data.length + 1} className="addrowtable"/>*/}
-				 </div>
->>>>>>> 4f96b8c7980da36893d232127bfc16cfba0e6469
+
+			
 		     	);
 		     }
      	

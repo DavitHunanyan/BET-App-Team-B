@@ -71,8 +71,9 @@ class TableRow extends Component{
 		 }
 		 sendMail(){
 			 console.log(this.state.guIdArray);
-			Fetch.postData('http://crmbetb.azurewebsites.net/api/SendMail', this.state.guIdArray).then(response =>
-			console.log("POST :",response));
+			Fetch.postData('http://crmbetb.azurewebsites.net/api/SendMail', this.state.guIdArray)
+			//.then(response =>
+			//console.log("POST :",response));
 			/*Fetch.postData('http://crmbetb.azurewebsites.net/api/Contacts',{CompanyName:"STDev",
                                                                             Country:"Armenia",
 																			Email:"davidstdev@gmail.com",
@@ -81,7 +82,7 @@ class TableRow extends Component{
 			//  Fetch.deleteData('http://crmbetb.azurewebsites.net/api/Contacts?Guid=aeb09a83-3078-452b-a734-e082b35b4554');
 		 }
 	     render(){
-			 console.log("table row data",this.props.dataArray);
+			// console.log("table row data",this.props.dataArray);
 		     const data=this.props.dataArray
 		      //console.log("TableRow Data :",data);
 		      if(this.state.editingShow){
@@ -167,11 +168,9 @@ class TableRow extends Component{
 		     	return(
 		     		<tbody>
 		     			{row}
-<<<<<<< HEAD
-		     		    <button onClick={this.sendMail} id="sendButton">Send Mail</button>
-=======
+
 		     		    <button className="send_mail" onClick={this.sendMail}>Send Mail</button>
->>>>>>> 4f96b8c7980da36893d232127bfc16cfba0e6469
+
 		     		</tbody>
 		     	);
 		      
