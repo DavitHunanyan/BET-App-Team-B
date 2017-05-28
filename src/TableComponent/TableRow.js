@@ -167,7 +167,11 @@ class TableRow extends Component{
 		     	return(
 		     		<tbody>
 		     			{row}
+<<<<<<< HEAD
 		     		    <button onClick={this.sendMail} id="sendButton">Send Mail</button>
+=======
+		     		    <button className="send_mail" onClick={this.sendMail}>Send Mail</button>
+>>>>>>> 4f96b8c7980da36893d232127bfc16cfba0e6469
 		     		</tbody>
 		     	);
 		      
