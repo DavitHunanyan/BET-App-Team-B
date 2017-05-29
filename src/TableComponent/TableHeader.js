@@ -17,9 +17,9 @@ class TableHeader extends Component{
 		 	return(
 		 <thead>
 		 	<tr >
-				
+				<th> ALL <input type="checkbox"/></th>
                  {head}
-		 		<th>Choose</th>
+				 <th></th>
 		 	</tr>
 		 </thead>
 		 	);

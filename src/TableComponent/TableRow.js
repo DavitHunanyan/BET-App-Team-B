@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EditRow from './EditRow.js';
 import array from '../array.js';
-import Fetch from '../Fetch.js';
+import '../Fetch.js';
 
 class TableRow extends Component{
 		     constructor(props){
@@ -19,8 +19,7 @@ class TableRow extends Component{
 			     this.saveEditing=this.saveEditing.bind(this);
 			     this.cancel=this.cancel.bind(this);
 				 this.checkBoxOnChange=this.checkBoxOnChange.bind(this);
-				 this.sendMail=this.sendMail.bind(this);
-			    // var editRowData={};
+				
 		     }
 	     deleteRow(event){
 		      // console.log(event.target.id);
@@ -67,20 +66,10 @@ class TableRow extends Component{
 					
 				 }
 			 }
+			 this.props.guids(this.state.guIdArray);
 			console.log("GuId Array",this.state.guIdArray);
 		 }
-		 sendMail(){
-			 console.log(this.state.guIdArray);
-			Fetch.postData('http://crmbetb.azurewebsites.net/api/SendMail', this.state.guIdArray)
-			//.then(response =>
-			//console.log("POST :",response));
-			/*Fetch.postData('http://crmbetb.azurewebsites.net/api/Contacts',{CompanyName:"STDev",
-                                                                            Country:"Armenia",
-																			Email:"davidstdev@gmail.com",
-                                                                            FullName:"Mane Boyakhchyan",
-                                                                            Position:"FrontEnd Developer"} )*/
-			//  Fetch.deleteData('http://crmbetb.azurewebsites.net/api/Contacts?Guid=aeb09a83-3078-452b-a734-e082b35b4554');
-		 }
+		
 	     render(){
 			// console.log("table row data",this.props.dataArray);
 		     const data=this.props.dataArray
@@ -140,15 +129,18 @@ class TableRow extends Component{
 		      }
 		      const row = data.map((data,index)=>
 		     	<tr key={index} ref={index}>
+					 <td key={index} id="checkbox">
+						 <input type="checkbox" id={index} onChange ={this.checkBoxOnChange } /> 
+					 </td>
 			     	<td key={data.Firstname}>
 				     	<EditRow update={this.props.update} data={data.Firstname} propName="Firstname" editingData={this.state.editRowData} 
 				     	show={this.state.editingShow} indexEdit={this.state.editRowIndex}/>
-				     	{data.FullName}
+				     	{data["Full name"]}
 			     	</td>
 			     	<td key={data.Lastname}>
 				     	<EditRow update={this.props.update} data={data.Lastname} propName="Lastname" editingData={this.state.editRowData} 
 				     	show={this.state.editingShow} indexEdit={this.state.editRowIndex}/>
-				     	{data.CompanyName}
+				     	{data["Company name"]}
 				     </td>
 					  <td key={data.DateInserted} id ="ids">
 			     	    {data.Position}
@@ -162,16 +154,13 @@ class TableRow extends Component{
 			     	    {data.Email}
 			     	</td>
 					 
-			     	<td ><input type="checkbox" id={index} onChange ={this.checkBoxOnChange } /> {/*<button id ={index} onClick={this.editRow} className="editbutton">Edit</button><button className ="deletebutton" onClick={this.deleteRow}  id={index}>Delete</button>*/}</td>
+			     	<td ><button id ={index} onClick={this.editRow} className="editbutton">Edit</button></td>
 		     	</tr>
 		     	);
 		     	return(
 		     		<tbody>
 		     			{row}
-
-		     		    <button className="send_mail" onClick={this.sendMail}>Send Mail</button>
-
-		     		</tbody>
+					</tbody>
 		     	);
 		      
 
